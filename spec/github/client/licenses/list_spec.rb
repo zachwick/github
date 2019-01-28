@@ -9,7 +9,7 @@ describe Github::Client::Licenses, '#list' do
 
     it { should respond_to(:find) }
 
-    context "resources found" do
+    context "all licenses" do
         before {
             stub_get(request_path).to_return(
                 :body => body,
@@ -19,7 +19,7 @@ describe Github::Client::Licenses, '#list' do
 
         it "should get the resources" do
             subject.list
-            a_get(request_path).should_have_been_made
+            a_get(request_path).should have_been_made
         end
 
         it_should_behave_like "an array of resources" do
@@ -29,12 +29,6 @@ describe Github::Client::Licenses, '#list' do
         it "should get resource information" do
             licenses = subject.list
             licenses.first.key.should == 'mit'
-        end
-
-        it "should yield result to a block" do
-            yielded = []
-            result = subject.list { |obj| yielded << obj }
-            yielded.should == result
         end
     end
 end

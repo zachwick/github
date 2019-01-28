@@ -12,6 +12,7 @@ module Github
                 'gitignore',
                 'git_data',
                 'issues',
+                'licenses',
                 'markdown',
                 'meta',
                 'orgs',
